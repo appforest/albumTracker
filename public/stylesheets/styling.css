@@ -1,0 +1,38 @@
+body{
+	background: #ECF0F1;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.laminasContainer{
+	margin: 1em;
+}
+
+.laminaDiv{
+	color: #3498db;
+	box-shadow: 1px 1px 15px gray;
+	text-align: center;
+}
+.laminaDiv:hover{
+	color: #2980b9;
+	box-shadow: 3px 3.5px 20px #666;
+	cursor: pointer;
+}
+.todaviaNo{
+	background: #eaeaea;
+}
+.esMia{
+	background: #1abc9c;
+	color: #ecf0f1;
+}
+.esMia:hover{
+	background: #1abc9c;
+	color: #ecf0f1;
+}
+.addQuitar{
+	background: gray;
+	z-index: 1;
+	margin-top: 0;
+}
+
+.laminaNumero{
+	padding: 0.5em 0 0.5em 0;
+}
