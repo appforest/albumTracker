@@ -1,11 +1,5 @@
-
-/**
- * Module dependencies.
- */
-
  var express = require('express');
  var routes = require('./routes');
- var user = require('./routes/user');
  var http = require('http');
  var path = require('path');
 
@@ -45,7 +39,6 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
 
 
 app.get('/api/laminas', function(req, res) {
@@ -80,7 +73,7 @@ app.put('/api/laminas/:id/:laTengo/:cuantas', function(req, res) {
 
 	Laminas.findByIdAndUpdate(req.params.id, {$set: {laTengo:req.params.laTengo, cuantas:req.params.cuantas}}, function(err, Lamina) {
 		if (!err) {
-			Laminas.find(function(err, laminas) {
+			Laminas.find({_id: req.params.id},function(err, laminas) {
 				if (err)
 					res.send(err)
 				res.json(laminas);

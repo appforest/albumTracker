@@ -11,4 +11,8 @@
     "mongodb": "*",
     "mongoose": "*"
   },
+  "subdomain": "albumTracker",
+  "engines": {
+    "node": "0.10.x"
+  }
 }

@@ -27,12 +27,22 @@ body{
 	background: #1abc9c;
 	color: #ecf0f1;
 }
-.addQuitar{
+.agregarQuitar{
 	background: gray;
 	z-index: 1;
 	margin-top: 0;
 }
-
 .laminaNumero{
 	padding: 0.5em 0 0.5em 0;
+}
+.active>a{
+	background: #1abc9c!important;
+	color: #ecf0f1!important;
+	border-color: #2adcac!important;
+}
+.pagination>li>a{
+	font-size: 1.5em;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	cursor: pointer;
 }

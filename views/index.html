@@ -3,18 +3,18 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Album Tracker</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="./stylesheets/styling.css">
+	<link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="./stylesheets/styling.css">
 </head>
 <body ng-controller="mainCtrl">
 	<div class="well">
 		<input type="number" class="form-control" ng-model="filterLaminas" placeholder="Filtrar">
-		<!-- 		<button ng-click="createTodas()">create</button> -->
+		<!-- <button ng-click="crearTodas()">CrearTodas</button> -->
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-md-2 laminasContainer" ng-repeat="lamina in laminas | filter:filterLaminas | startFrom:(currentPage - 1)*pageSize | limitTo: pageSize | orderBy:'numero'">
-				<div class="row laminaDiv" ng-class="{'esMia': lamina.laTengo || lamina.cuantas>0, 'todaviaNo': !lamina.laTengo || lamina.cuantas<1}" ng-click="laTengo(lamina._id, lamina.laTengo, lamina.cuantas)">
+			<div class="col-xs-12 col-md-2 laminasContainer" ng-repeat="lamina in laminas | filter: filterLaminas | startFrom:(currentPage - 1)*pageSize | limitTo: pageSize | orderBy:'numero'">
+				<div class="row laminaDiv" ng-class="{'esMia': lamina.laTengo || lamina.cuantas>0, 'todaviaNo': !lamina.laTengo || lamina.cuantas<1}" ng-click="laTengo(lamina._id, lamina.laTengo, lamina.cuantas, lamina.numero)">
 					<div class="col-xs-12">
 						<h1 class="laminaNumero">{{lamina.numero}}</h1>
 						<p class="repetidas">Repetida {{lamina.cuantas}} veces</p>
@@ -22,10 +22,10 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<div class="addQuitar">
-							<button class="btn btn-default glyphicon glyphicon-plus pull-right" ng-click="addUnamas(lamina._id, lamina.laTengo, lamina.cuantas)">
+						<div class="agregarQuitar">
+							<button class="btn btn-default glyphicon glyphicon-plus pull-right" ng-click="agregarUnamas(lamina._id, lamina.laTengo, lamina.cuantas, lamina.numero)">
 							</button>
-							<button class="btn btn-default glyphicon glyphicon-minus pull-left" ng-click="remUna(lamina._id, lamina.laTengo, lamina.cuantas)">
+							<button class="btn btn-default glyphicon glyphicon-minus pull-left" ng-click="quitarUna(lamina._id, lamina.laTengo, lamina.cuantas, lamina.numero)">
 							</button>
 						</div>
 					</div>
@@ -33,30 +33,40 @@
 			</div>
             <div class="row">
 	            <div class="text-center">
-	            	<pagination boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+	            	<pagination
+	            	total-items="totalItems"
+	            	page="currentPage"
+	            	max-size="maxSize"
+	            	class="pagination-sm"
+	            	previous-text="&lsaquo;"
+	            	next-text="&rsaquo;"
+	            	first-text="&laquo;"
+	            	last-text="&raquo;"
+	            	boundary-links="true"
+	            	rotate="false">
+	            </pagination>
 	            </div>
 			</div>
 		</div>
     </div> 
-	<!-- Twitter Bootstrap -->
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
 	
 	<!-- AngujarJS -->
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
+	<script src="./lib/angular.min.js"></script>
+	<script src="./lib/angular-resource.min.js"></script>
 
+	<!-- Los JS para Angular -->
 	<script src="./javascripts/app.js"></script>
 
 	<script src="./javascripts/dataFactory.js"></script>
 	<script src="./javascripts/controller.js"></script>
 
+	<!-- Las librerías de Angular UI (para paginación) -->
 	<script src="./lib/angular-ui.min.js"></script>
 	<script src="./lib/ui-bootstrap-tpls-0.10.0.min.js"></script>
-
+		<!-- Filtros para la paginación -->
 	<script src="./javascripts/limitTo_filter.js"></script>
 	<script src="./javascripts/startFrom_filter.js"></script>
-
-
 
 
 </body>
